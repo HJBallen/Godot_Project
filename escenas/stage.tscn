@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwisrv221crb7"]
+
+[ext_resource type="Texture2D" uid="uid://d27kq2e7mfarc" path="res://assets/Escenario/scene.PNG" id="1_du02s"]
+[ext_resource type="PackedScene" uid="uid://crlk8w0plbn4f" path="res://escenas/player.tscn" id="2_nquie"]
+
+[node name="Stage" type="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(672, 339)
+texture = ExtResource("1_du02s")
+
+[node name="Player" parent="." instance=ExtResource("2_nquie")]
+position = Vector2(388, 192)
+
+[node name="Limit" type="Node2D" parent="."]
+
+[node name="inicio_stage" type="Marker2D" parent="Limit" groups=["inicio"]]
+position = Vector2(133, 76)
+
+[node name="final_stage" type="Marker2D" parent="Limit" groups=["final"]]
+position = Vector2(1220, 612)
