@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwisrv221crb7"]
+[gd_scene load_steps=5 format=3 uid="uid://bwisrv221crb7"]
 
-[ext_resource type="Texture2D" uid="uid://d27kq2e7mfarc" path="res://assets/Escenario/scene.PNG" id="1_du02s"]
-[ext_resource type="PackedScene" uid="uid://crlk8w0plbn4f" path="res://escenas/player.tscn" id="2_nquie"]
-[ext_resource type="PackedScene" uid="uid://qoi2nwhqqv87" path="res://escenas/zombie.tscn" id="3_f8eht"]
+[ext_resource type="Texture2D" uid="uid://d27kq2e7mfarc" path="res://assets/backgrounds/scene.PNG" id="1_du02s"]
+[ext_resource type="PackedScene" uid="uid://crlk8w0plbn4f" path="res://scenes/player.tscn" id="2_nquie"]
+[ext_resource type="PackedScene" uid="uid://qoi2nwhqqv87" path="res://scenes/esqueleto.tscn" id="3_f8eht"]
+[ext_resource type="PackedScene" uid="uid://dpuh7c61rss2e" path="res://scenes/zombie.tscn" id="4_jx8nu"]
 
 [node name="Stage" type="Node2D"]
 
@@ -17,14 +18,14 @@ texture = ExtResource("1_du02s")
 [node name="Player" parent="." instance=ExtResource("2_nquie")]
 position = Vector2(388, 192)
 
-[node name="Zombie" parent="." instance=ExtResource("3_f8eht")]
+[node name="esqueleto" parent="." instance=ExtResource("3_f8eht")]
 position = Vector2(354, 271)
-
-[node name="Zombie2" parent="." instance=ExtResource("3_f8eht")]
-position = Vector2(209, 317)
 
 [node name="Zombie3" parent="." instance=ExtResource("3_f8eht")]
 position = Vector2(758, 296)
+
+[node name="Zombie" parent="." instance=ExtResource("4_jx8nu")]
+position = Vector2(347, 282)
 
 [node name="Limit" type="Node2D" parent="."]
 
