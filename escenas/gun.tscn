@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj1klagkc0po3"]
+
+[ext_resource type="Script" path="res://escenas/gun.gd" id="1_nxqn7"]
+[ext_resource type="Texture2D" uid="uid://gudf3gf11lth" path="res://assets/arma/pistol.png" id="1_umijs"]
+[ext_resource type="PackedScene" uid="uid://c64ow73ym0y31" path="res://escenas/bullet.tscn" id="3_v2waq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e26g2"]
+radius = 46.0435
+
+[node name="Gun" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_nxqn7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(22, 7)
+shape = SubResource("CircleShape2D_e26g2")
+
+[node name="WeaponShaft" type="Marker2D" parent="."]
+scale = Vector2(0.157143, 0.12)
+
+[node name="Pistol" type="Sprite2D" parent="WeaponShaft"]
+position = Vector2(118.523, 87.5)
+scale = Vector2(4.25, 4.5)
+texture = ExtResource("1_umijs")
+
+[node name="ShootingPoint" type="Marker2D" parent="WeaponShaft/Pistol"]
+unique_name_in_owner = true
+position = Vector2(24.0196, -10.7143)
+
+[node name="Bullet" parent="WeaponShaft/Pistol/ShootingPoint" instance=ExtResource("3_v2waq")]
+position = Vector2(40, 4)
+rotation = 0.0127321
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
