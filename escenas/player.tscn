@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cmiaqx2ko2ipi" path="res://assets/personaje/png/Idle (8).png" id="17_urjw2"]
 [ext_resource type="Texture2D" uid="uid://cj2nb4ix7lwd1" path="res://assets/personaje/png/Idle (9).png" id="18_5i2xh"]
 [ext_resource type="Texture2D" uid="uid://b2pmq8ejmqv4k" path="res://assets/personaje/png/Idle (10).png" id="19_fkql5"]
-[ext_resource type="PackedScene" uid="uid://cj1klagkc0po3" path="res://escenas/gun.tscn" id="20_77o36"]
+[ext_resource type="PackedScene" uid="uid://cj1klagkc0po3" path="res://escenas/gun.tscn" id="20_laqta"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i84do"]
 animations = [{
@@ -89,11 +89,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rs0oo"]
-<<<<<<< HEAD
-size = Vector2(38, 61)
-=======
 size = Vector2(52, 35)
->>>>>>> hemerson
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(229, 135)
@@ -101,21 +97,16 @@ script = ExtResource("1_jdcov")
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-83.875, 30.5)
-scale = Vector2(0.143136, 0.138376)
+position = Vector2(-99.9, -21.8)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_i84do")
 animation = &"parado"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-<<<<<<< HEAD
-position = Vector2(-89, 30)
-shape = SubResource("RectangleShape2D_rs0oo")
-
-[node name="Gun" parent="." instance=ExtResource("20_77o36")]
-position = Vector2(-79, 44)
-=======
 position = Vector2(-107, 9.5)
 shape = SubResource("RectangleShape2D_rs0oo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
->>>>>>> hemerson
+
+[node name="Gun" parent="." instance=ExtResource("20_laqta")]
+position = Vector2(-105, -3)

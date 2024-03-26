@@ -6,17 +6,12 @@
 
 [node name="Stage" type="Node2D"]
 
-<<<<<<< HEAD
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(667, 342)
-=======
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -90
 follow_viewport_enabled = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(672, 339)
->>>>>>> hemerson
 texture = ExtResource("1_du02s")
 
 [node name="Player" parent="." instance=ExtResource("2_nquie")]

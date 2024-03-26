@@ -60,6 +60,8 @@ radius = 23.3333
 height = 86.6667
 
 [node name="Zombie" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_bn5xv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
