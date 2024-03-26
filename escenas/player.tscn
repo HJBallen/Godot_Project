@@ -88,7 +88,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rs0oo"]
-size = Vector2(69, 98)
+size = Vector2(52, 35)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(229, 135)
@@ -102,5 +102,7 @@ sprite_frames = SubResource("SpriteFrames_i84do")
 animation = &"parado"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-92.5, -19)
+position = Vector2(-107, 9.5)
 shape = SubResource("RectangleShape2D_rs0oo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
