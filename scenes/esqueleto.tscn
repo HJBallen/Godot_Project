@@ -1,0 +1,100 @@
+[gd_scene load_steps=15 format=3 uid="uid://qoi2nwhqqv87"]
+
+[ext_resource type="Script" path="res://scripts/zombie.gd" id="1_bn5xv"]
+[ext_resource type="Texture2D" uid="uid://jbtcky367gyi" path="res://assets/enemies/skeleton/Skeleton_01_White_Walk.png" id="2_fak58"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38u3p"]
+atlas = ExtResource("2_fak58")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx3c3"]
+atlas = ExtResource("2_fak58")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rrkq"]
+atlas = ExtResource("2_fak58")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0au8"]
+atlas = ExtResource("2_fak58")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alpa6"]
+atlas = ExtResource("2_fak58")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cevra"]
+atlas = ExtResource("2_fak58")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv0xi"]
+atlas = ExtResource("2_fak58")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nv3e"]
+atlas = ExtResource("2_fak58")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4kw3"]
+atlas = ExtResource("2_fak58")
+region = Rect2(768, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frtpq"]
+atlas = ExtResource("2_fak58")
+region = Rect2(864, 0, 96, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_em2qt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38u3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx3c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rrkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0au8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alpa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cevra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv0xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nv3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4kw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frtpq")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ubp4"]
+radius = 15.5952
+
+[node name="Esqueleto" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_bn5xv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_em2qt")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 53)
+scale = Vector2(0.9, 0.9)
+shape = SubResource("CircleShape2D_0ubp4")

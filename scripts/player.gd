@@ -11,7 +11,7 @@ func _physics_process(delta):
 	velocity=direction*SPEED
 	move_and_slide()
 	limites(inicio,final)
-	if direction.x>0:
+	if direction.x>=0:
 		$AnimatedSprite2D.flip_h=false
 		animar()
 	else:
@@ -21,10 +21,10 @@ func _physics_process(delta):
 		
 	
 func animar():
-	if velocity.length()>0.0:
-		$AnimatedSprite2D.play("caminar")
+	if velocity != Vector2(0,0):
+		$AnimatedSprite2D.play("walk")
 	else:
-		$AnimatedSprite2D.play("parado")
+		$AnimatedSprite2D.play("idle")
 
 func limites(inicio,final):
 	if global_position.x<inicio.x:
