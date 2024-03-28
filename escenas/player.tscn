@@ -109,4 +109,4 @@ shape = SubResource("RectangleShape2D_rs0oo")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Gun" parent="." instance=ExtResource("20_laqta")]
-position = Vector2(-105, -3)
+position = Vector2(-71, -6)

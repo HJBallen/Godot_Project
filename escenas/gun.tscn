@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj1klagkc0po3"]
+[gd_scene load_steps=4 format=3 uid="uid://cj1klagkc0po3"]
 
 [ext_resource type="Script" path="res://escenas/gun.gd" id="1_nxqn7"]
 [ext_resource type="Texture2D" uid="uid://gudf3gf11lth" path="res://assets/arma/pistol.png" id="1_umijs"]
-[ext_resource type="PackedScene" uid="uid://c64ow73ym0y31" path="res://escenas/bullet.tscn" id="3_v2waq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e26g2"]
 radius = 459.017
@@ -30,10 +29,6 @@ texture = ExtResource("1_umijs")
 [node name="ShootingPoint" type="Marker2D" parent="WeaponShaft/Pistol"]
 unique_name_in_owner = true
 position = Vector2(24.0196, -10.7143)
-
-[node name="Bullet" parent="WeaponShaft/Pistol/ShootingPoint" instance=ExtResource("3_v2waq")]
-position = Vector2(54, 1)
-rotation = 0.0127321
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
