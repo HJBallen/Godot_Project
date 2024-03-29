@@ -21,8 +21,7 @@ layer = -90
 follow_viewport_enabled = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(878.75, 469)
-scale = Vector2(1.31423, 1.38872)
+position = Vector2(669, 338)
 texture = ExtResource("1_du02s")
 
 [node name="Player" parent="." instance=ExtResource("2_nquie")]
@@ -30,13 +29,13 @@ unique_name_in_owner = true
 position = Vector2(388, 192)
 
 [node name="esqueleto" parent="." instance=ExtResource("3_f8eht")]
-position = Vector2(112, 252)
+position = Vector2(333, 185)
 
 [node name="esqueleto2" parent="." instance=ExtResource("3_f8eht")]
-position = Vector2(102, 163)
+position = Vector2(401, 180)
 
 [node name="Zombie" parent="." instance=ExtResource("4_jx8nu")]
-position = Vector2(98, 33)
+position = Vector2(356, 198)
 
 [node name="Limit" type="Node2D" parent="."]
 

@@ -78,21 +78,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ubp4"]
 radius = 15.5952
 
-[node name="Esqueleto" type="CharacterBody2D"]
+[node name="Esqueleto" type="CharacterBody2D" groups=["mobs"]]
 collision_layer = 2
 collision_mask = 3
+platform_floor_layers = 4294967040
 script = ExtResource("1_bn5xv")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["mob"]]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_em2qt")
 animation = &"walk"
+frame_progress = 0.73864
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 53)

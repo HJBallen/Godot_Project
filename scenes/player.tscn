@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://crlk8w0plbn4f"]
+[gd_scene load_steps=24 format=3 uid="uid://crlk8w0plbn4f"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jdcov"]
 [ext_resource type="Texture2D" uid="uid://csjsm5783hm8p" path="res://assets/characters/player/Player_Costeno_idle.png" id="2_aevhf"]
@@ -131,25 +131,44 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kxfm"]
-radius = 25.02
+radius = 23.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wcjoa"]
+radius = 28.0179
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(229, 135)
+platform_floor_layers = 4294967040
 script = ExtResource("1_jdcov")
-metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-107, 12)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_i84do")
 animation = &"walk"
 frame_progress = 0.931455
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-102, 38)
+position = Vector2(1, 25)
 shape = SubResource("CircleShape2D_4kxfm")
+
+[node name="Gun" parent="." instance=ExtResource("20_laqta")]
+position = Vector2(-21, 9)
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, 25)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_wcjoa")
+debug_color = Color(1, 0, 0.113725, 0.419608)
+
+[node name="Inmunidad" type="Timer" parent="."]
+one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Gun" parent="." instance=ExtResource("20_laqta")]
-position = Vector2(-135, -6)
+[connection signal="body_entered" from="HurtBox" to="." method="_on_Player_body_entered"]
+[connection signal="timeout" from="Inmunidad" to="." method="_on_inmunidad_timeout"]
+[connection signal="timeout" from="Inmunidad" to="." method="inmunidad"]
