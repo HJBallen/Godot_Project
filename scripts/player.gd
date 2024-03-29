@@ -1,10 +1,18 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+signal hit
+signal death
 
+const SPEED = 300.
+const DAMAGE_RATE = 1
+
+var inmune : bool
+var health = 5
+
+@onready var inmune_timer = $Inmunidad
 
 func _physics_process(delta):
-
+	
 	var inicio=get_tree().get_nodes_in_group("inicio")[0].global_position
 	var final=get_tree().get_nodes_in_group("final")[0].global_position
 	var direction = Input.get_vector("move_left", "move_right","move_up","move_down")
@@ -17,9 +25,20 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite2D.flip_h=true
 		animar()
-		
-		
+
+
+func inmunidad():
+	inmune_timer.start()
 	
+
+func dmg_control():
+	if not inmune == true and health > 0:
+		health-=1
+		inmune = true
+		inmunidad()
+	elif health == 0:
+		emit_signal('death')
+
 func animar():
 	if velocity != Vector2(0,0):
 		$AnimatedSprite2D.play("walk")
@@ -36,5 +55,12 @@ func limites(inicio,final):
 		global_position.y=inicio.y-5
 	if global_position.y>final.y:
 		global_position.y=final.y+5
-	
 
+func _on_Player_body_entered(body):
+	if body.is_in_group("mobs"):
+		emit_signal("hit")
+		dmg_control()
+
+
+func _on_inmunidad_timeout():
+	inmune = false
