@@ -2,12 +2,18 @@
 
 [ext_resource type="Script" path="res://scripts/gui.gd" id="1_ahm25"]
 [ext_resource type="Texture2D" uid="uid://d27kq2e7mfarc" path="res://assets/backgrounds/scene.PNG" id="1_du02s"]
+[ext_resource type="Script" path="res://scripts/stage.gd" id="1_jykxd"]
 [ext_resource type="PackedScene" uid="uid://v8e678naupoy" path="res://scenes/corazon.tscn" id="2_3h6h4"]
 [ext_resource type="PackedScene" uid="uid://crlk8w0plbn4f" path="res://scenes/player.tscn" id="2_nquie"]
-[ext_resource type="PackedScene" uid="uid://qoi2nwhqqv87" path="res://scenes/esqueleto.tscn" id="3_f8eht"]
-[ext_resource type="PackedScene" uid="uid://dpuh7c61rss2e" path="res://scenes/zombie.tscn" id="4_jx8nu"]
+
+[sub_resource type="Curve2D" id="Curve2D_klcus"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -198, -182, 0, 0, 0, 0, 1975, -193, 0, 0, 0, 0, 1972, 1052, 0, 0, 0, 0, -187, 1049, 0, 0, 0, 0, -198, -182)
+}
+point_count = 5
 
 [node name="Stage" type="Node2D"]
+script = ExtResource("1_jykxd")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -29,14 +35,17 @@ texture = ExtResource("1_du02s")
 unique_name_in_owner = true
 position = Vector2(388, 192)
 
-[node name="esqueleto" parent="." instance=ExtResource("3_f8eht")]
-position = Vector2(112, 252)
+[node name="SpawnPoint" type="Path2D" parent="Player"]
+position = Vector2(-388, -192)
+curve = SubResource("Curve2D_klcus")
 
-[node name="esqueleto2" parent="." instance=ExtResource("3_f8eht")]
-position = Vector2(102, 163)
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/SpawnPoint"]
+unique_name_in_owner = true
+position = Vector2(-198, -182)
+rotation = -0.00506208
 
-[node name="Zombie" parent="." instance=ExtResource("4_jx8nu")]
-position = Vector2(98, 33)
+[node name="Timer" type="Timer" parent="Player/SpawnPoint"]
+autostart = true
 
 [node name="Limit" type="Node2D" parent="."]
 
@@ -47,3 +56,4 @@ position = Vector2(133, 76)
 position = Vector2(1220, 612)
 
 [connection signal="hit" from="Player" to="GUI" method="_on_player_hit"]
+[connection signal="timeout" from="Player/SpawnPoint/Timer" to="." method="_on_timer_timeout"]
