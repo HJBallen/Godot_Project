@@ -1,8 +1,7 @@
 extends CanvasLayer
 
 @onready var player = %Player
-@onready var gui = %GUI
-@onready var corazones = gui.get_children()
+@onready var corazones = get_children()
 
 func _ready():
 	var new_corazon
@@ -10,7 +9,7 @@ func _ready():
 		new_corazon = preload("res://scenes/corazon.tscn").instantiate()
 		new_corazon.global_position = corazones[i].global_position + Vector2(35,0)
 		corazones.append(new_corazon)
-		gui.add_child(new_corazon)
+		add_child(new_corazon)
 
 
 
