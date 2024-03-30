@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bibx5ubxtjly7"
-path="res://.godot/imported/Dead.png-b4aad16528413b4a2bea2496733cb28d.ctex"
+uid="uid://dbi7o8jnxp4l4"
+path="res://.godot/imported/1_11.png-b0dc0d319ea719f78925a1344a09e998.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/zombie/Dead.png"
-dest_files=["res://.godot/imported/Dead.png-b4aad16528413b4a2bea2496733cb28d.ctex"]
+source_file="res://assets/blood/1_11.png"
+dest_files=["res://.godot/imported/1_11.png-b0dc0d319ea719f78925a1344a09e998.ctex"]
 
 [params]
 
