@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwhdr620wykfh"
-path="res://.godot/imported/Walk.png-02700d0a3ade536e69fe152668b925a2.ctex"
+uid="uid://d1xxl7e5krs54"
+path="res://.godot/imported/1_0.png-6f1a64a83cbb9594819998e8a8ddee34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/zombie/Walk.png"
-dest_files=["res://.godot/imported/Walk.png-02700d0a3ade536e69fe152668b925a2.ctex"]
+source_file="res://assets/blood/1_0.png"
+dest_files=["res://.godot/imported/1_0.png-6f1a64a83cbb9594819998e8a8ddee34.ctex"]
 
 [params]
 

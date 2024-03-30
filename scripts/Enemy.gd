@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @onready var player = get_node("/root/Stage/Player")
 @onready var animation_tree=$Sprite2D/AnimationTree
-@onready var playback=$Sprite2D/AnimationTree.get("parameters/playback")
 var health=3
 var hurt: bool
 var dead: bool
@@ -22,13 +21,15 @@ func update_animations():
 	else:
 		animation_tree["parameters/conditions/is_hurt"]=false
 	if dead:
-		animation_tree["parameters/conditions/is_die"]=true
-		playback.travel("die")
+		animation_tree["parameters/conditions/is_dead"]=true
+		
 
 func take_damage():
 	health -= 1
 	hurt=true
+	print("recibe hit")
 	if health == 0:
+		print("muelte")
 		dead=true
 		
 

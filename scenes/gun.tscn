@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ck7c5krk7at8s" path="res://assets/guns/[animated] Shotgun_V1.02_SHELL_OPEN-export14.png" id="15_dvusv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e26g2"]
-radius = 459.017
+radius = 519.001
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_edyki"]
 animations = [{

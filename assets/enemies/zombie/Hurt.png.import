@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn6erkxqo6nq7"
-path="res://.godot/imported/Run.png-59b1e841cec3e1a2e40ae953bf1b6673.ctex"
+uid="uid://cdb8lgmdlwujq"
+path="res://.godot/imported/Hurt.png-c85ec6e32e24a87993556ea9940cb4e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/zombie/Run.png"
-dest_files=["res://.godot/imported/Run.png-59b1e841cec3e1a2e40ae953bf1b6673.ctex"]
+source_file="res://assets/enemies/zombie/Hurt.png"
+dest_files=["res://.godot/imported/Hurt.png-c85ec6e32e24a87993556ea9940cb4e1.ctex"]
 
 [params]
 

@@ -5,12 +5,17 @@
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_jykxd"]
 [ext_resource type="PackedScene" uid="uid://v8e678naupoy" path="res://scenes/corazon.tscn" id="2_3h6h4"]
 [ext_resource type="PackedScene" uid="uid://crlk8w0plbn4f" path="res://scenes/player.tscn" id="2_nquie"]
+<<<<<<< HEAD
 
 [sub_resource type="Curve2D" id="Curve2D_klcus"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -198, -182, 0, 0, 0, 0, 1975, -193, 0, 0, 0, 0, 1972, 1052, 0, 0, 0, 0, -187, 1049, 0, 0, 0, 0, -198, -182)
 }
 point_count = 5
+=======
+[ext_resource type="PackedScene" uid="uid://qoi2nwhqqv87" path="res://scenes/esqueleto.tscn" id="3_7we4i"]
+[ext_resource type="PackedScene" uid="uid://bhe2svqq7psl0" path="res://scenes/zombie.tscn" id="3_e1u1r"]
+>>>>>>> steven
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_jykxd")
@@ -32,6 +37,7 @@ scale = Vector2(1.31423, 1.38872)
 texture = ExtResource("1_du02s")
 
 [node name="Player" parent="." instance=ExtResource("2_nquie")]
+<<<<<<< HEAD
 unique_name_in_owner = true
 position = Vector2(388, 192)
 
@@ -46,6 +52,13 @@ rotation = -0.00506208
 
 [node name="Timer" type="Timer" parent="Player/SpawnPoint"]
 autostart = true
+=======
+
+[node name="zombie" parent="." instance=ExtResource("3_e1u1r")]
+position = Vector2(-1, 0)
+
+[node name="Esqueleto" parent="." instance=ExtResource("3_7we4i")]
+>>>>>>> steven
 
 [node name="Limit" type="Node2D" parent="."]
 
