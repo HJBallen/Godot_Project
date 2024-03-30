@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwisrv221crb7"]
+[gd_scene load_steps=5 format=3 uid="uid://bwisrv221crb7"]
 
 [ext_resource type="Texture2D" uid="uid://d27kq2e7mfarc" path="res://assets/backgrounds/scene.PNG" id="1_du02s"]
 [ext_resource type="PackedScene" uid="uid://crlk8w0plbn4f" path="res://scenes/player.tscn" id="2_nquie"]
-[ext_resource type="PackedScene" uid="uid://bal3fke5bplte" path="res://scenes/enemy.tscn" id="3_8nujp"]
+[ext_resource type="PackedScene" uid="uid://qoi2nwhqqv87" path="res://scenes/esqueleto.tscn" id="3_7we4i"]
+[ext_resource type="PackedScene" uid="uid://bhe2svqq7psl0" path="res://scenes/zombie.tscn" id="3_e1u1r"]
 
 [node name="Stage" type="Node2D"]
 
@@ -16,10 +17,10 @@ texture = ExtResource("1_du02s")
 
 [node name="Player" parent="." instance=ExtResource("2_nquie")]
 
-[node name="Enemy" parent="." instance=ExtResource("3_8nujp")]
+[node name="zombie" parent="." instance=ExtResource("3_e1u1r")]
+position = Vector2(-1, 0)
 
-[node name="Enemy2" parent="." instance=ExtResource("3_8nujp")]
-position = Vector2(151, 248)
+[node name="Esqueleto" parent="." instance=ExtResource("3_7we4i")]
 
 [node name="Limit" type="Node2D" parent="."]
 
