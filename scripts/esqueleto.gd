@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var animation_tree = $Sprite2D/AnimationTree
+@onready var playback = $Sprite2D/AnimationTree.get("parameters/playback")
 @onready var player = get_node("/root/Stage/Player")
 
 var health := 3
@@ -19,17 +20,13 @@ func _physics_process(delta):
 func update_animations():
 	if velocity != Vector2.ZERO:
 		animation_tree["parameters/conditions/is_walking"]=true
-	else:
-		animation_tree["parameters/conditions/is_walking"]=false
 	if	hurt:
 		animation_tree["parameters/conditions/is_hurt"] = true
 	else:
 		animation_tree["parameters/conditions/is_hurt"] = false
 	if dead:
-		animation_tree["parameters/conditions/is_died"] = true
-		
-	else:
-		animation_tree["parameters/conditions/is_died"] = false
+		animation_tree["parameters/conditions/is_dead"] = true
+		playback.travel("die")
 
 func take_damage():
 	health -= 1
