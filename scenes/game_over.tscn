@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://1xpcsgdwj4kw"]
+
+[ext_resource type="Script" path="res://scripts/GameOver.gd" id="1_goprl"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_goprl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.235294, 0.235294, 0.235294, 0.32549)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 161.0
+offset_right = 727.0
+offset_bottom = 245.0
+theme_override_font_sizes/font_size = 61
+text = "GAME OVER
+"
+
+[node name="Retry" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 385.0
+offset_top = 320.0
+offset_right = -695.0
+offset_bottom = -297.0
+text = "Retry"
+
+[node name="Quit" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 650.0
+offset_top = 322.0
+offset_right = -430.0
+offset_bottom = -295.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit
+"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

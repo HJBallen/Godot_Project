@@ -55,5 +55,6 @@ position = Vector2(133, 76)
 [node name="final_stage" type="Marker2D" parent="Limit" groups=["final"]]
 position = Vector2(1220, 612)
 
+[connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="hit" from="Player" to="GUI" method="_on_player_hit"]
 [connection signal="timeout" from="Player/SpawnPoint/Timer" to="." method="_on_timer_timeout"]
