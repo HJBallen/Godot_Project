@@ -32,10 +32,8 @@ func inmunidad():
 	
 
 func dmg_control():
-	if not inmune == true and health > 0:
+	if  health > 0:
 		health-=1
-		inmune = true
-		inmunidad()
 	elif health == 0:
 		emit_signal('death')
 
@@ -60,7 +58,6 @@ func _on_Player_body_entered(body):
 	if body.is_in_group("mobs"):
 		emit_signal("hit")
 		dmg_control()
-
 
 func _on_inmunidad_timeout():
 	inmune = false
