@@ -15,13 +15,6 @@ script = ExtResource("1_jykxd")
 unique_name_in_owner = true
 position = Vector2(1067, 605)
 
-[node name="GUI" type="CanvasLayer" parent="Player"]
-unique_name_in_owner = true
-script = ExtResource("1_ahm25")
-
-[node name="corazon" parent="Player/GUI" instance=ExtResource("2_3h6h4")]
-position = Vector2(15, 10)
-
 [node name="Path2D" type="Path2D" parent="Player"]
 position = Vector2(-1067, -605)
 curve = SubResource("Curve2D_o6b5w")
@@ -30,10 +23,6 @@ curve = SubResource("Curve2D_o6b5w")
 unique_name_in_owner = true
 position = Vector2(-198, -182)
 rotation = -0.00506208
-
-[node name="_Timer_391399" type="Timer" parent="Player/Path2D/PathFollow2D"]
-wait_time = 0.2
-one_shot = true
 
 [node name="Timer" type="Timer" parent="Player/Path2D"]
 autostart = true
@@ -54,3 +43,14 @@ position = Vector2(133, 76)
 
 [node name="final_stage" type="Marker2D" parent="Limit" groups=["final"]]
 position = Vector2(1220, 612)
+
+[node name="GUI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_ahm25")
+
+[node name="corazon" parent="GUI" instance=ExtResource("2_3h6h4")]
+position = Vector2(15, 10)
+
+[connection signal="death" from="Player" to="." method="_on_player_death"]
+[connection signal="player_ready" from="Player" to="GUI" method="_on_player_ready"]
+[connection signal="timeout" from="Player/Path2D/Timer" to="." method="_on_timer_timeout"]
