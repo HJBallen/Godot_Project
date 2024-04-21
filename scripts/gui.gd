@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var corazones = get_children()
 
 func _ready():
+	print(player.health)
 	var new_corazon
 	for i in range(player.health-1):
 		new_corazon = preload("res://scenes/corazon.tscn").instantiate()

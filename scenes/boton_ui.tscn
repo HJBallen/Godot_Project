@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3 uid="uid://1vchbbghtkyn"]
+
+[ext_resource type="Texture2D" uid="uid://rp3b2pj2y5ii" path="res://assets/UI/button1.png" id="1_oo0ir"]
+[ext_resource type="FontFile" uid="uid://c4vjb5mibtjjs" path="res://assets/UI/PixelifySans-Regular.ttf" id="1_s8cxu"]
+[ext_resource type="Texture2D" uid="uid://blja57ituwx7d" path="res://assets/UI/button2.png" id="2_xlcg0"]
+[ext_resource type="Texture2D" uid="uid://tcjakt5dlh16" path="res://assets/UI/button3.png" id="3_ltpyg"]
+[ext_resource type="Script" path="res://scripts/boton.gd" id="5_gniro"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hmsrr"]
+texture = ExtResource("1_oo0ir")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bjqno"]
+texture = ExtResource("2_xlcg0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ovmbq"]
+texture = ExtResource("3_ltpyg")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_coftg"]
+
+[node name="Button" type="Button"]
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 192.0
+theme_override_constants/outline_size = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("1_s8cxu")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxTexture_hmsrr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bjqno")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ovmbq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_coftg")
+text = "BTN
+"
+script = ExtResource("5_gniro")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 55.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("1_s8cxu")
+theme_override_font_sizes/font_size = 28
+text = "BTN"
+horizontal_alignment = 1

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://v8e678naupoy"]
 
-[ext_resource type="Texture2D" uid="uid://ctcbq6oim8et2" path="res://assets/characters/player/background.png" id="1_gqlwd"]
-[ext_resource type="Texture2D" uid="uid://pn1gajvt7qtj" path="res://assets/characters/player/border.png" id="2_n5fdn"]
-[ext_resource type="Texture2D" uid="uid://cbomvf85qkhvr" path="res://assets/characters/player/heart.png" id="3_46dvf"]
+[ext_resource type="Texture2D" uid="uid://ctcbq6oim8et2" path="res://assets/characters/health/background.png" id="1_gqlwd"]
+[ext_resource type="Texture2D" uid="uid://pn1gajvt7qtj" path="res://assets/characters/health/border.png" id="2_n5fdn"]
+[ext_resource type="Texture2D" uid="uid://cbomvf85qkhvr" path="res://assets/characters/health/heart.png" id="3_46dvf"]
 
 [node name="corazon" type="Node2D"]
 position = Vector2(15, 11)

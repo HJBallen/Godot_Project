@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://six6bc63ljun"]
+
+[ext_resource type="Texture2D" uid="uid://f0iasajm8tth" path="res://assets/UI/10 Border 01-export.png" id="1_u444h"]
+[ext_resource type="Script" path="res://scripts/mainMenu.gd" id="1_uipgt"]
+[ext_resource type="PackedScene" uid="uid://bs74jkpu6jbtw" path="res://scenes/boton_ui_large.tscn" id="3_a86pl"]
+[ext_resource type="FontFile" uid="uid://c4vjb5mibtjjs" path="res://assets/UI/PixelifySans-Regular.ttf" id="3_vxgyg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ufsly"]
+texture = ExtResource("1_u444h")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_uipgt")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 328.0
+offset_right = 848.0
+offset_bottom = 568.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ufsly")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 440.0
+offset_top = 112.0
+offset_right = 744.0
+offset_bottom = 193.0
+theme_override_fonts/font = ExtResource("3_vxgyg")
+theme_override_font_sizes/font_size = 32
+text = "Average Colombian Project"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="button_start" parent="." instance=ExtResource("3_a86pl")]
+offset_left = 496.0
+offset_top = 344.0
+offset_right = 688.0
+offset_bottom = 408.0
+
+[node name="button_exit" parent="." instance=ExtResource("3_a86pl")]
+offset_left = 504.0
+offset_top = 432.0
+offset_right = 680.0
+offset_bottom = 496.0
+text = "EXIT"
+
+[connection signal="pressed" from="button_start" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="button_exit" to="." method="_on_button_exit_pressed"]

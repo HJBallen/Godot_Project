@@ -1,5 +1,16 @@
 extends Node2D
 
+
+func  _ready():
+	%Player.char_name = GLOBAL.character[GLOBAL.selected_char]
+	match GLOBAL.character[GLOBAL.selected_char]:
+		"rolo":
+			%Player.health = 5
+		"paisa":
+			%Player.health = 3
+		"costeno":
+			%Player.health = 7
+
 func random_mob():
 	var new_zombie= preload("res://scenes/zombie.tscn").instantiate()
 	var new_esqueleto= preload("res://scenes/esqueleto.tscn").instantiate()

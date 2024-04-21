@@ -3,20 +3,23 @@ extends CharacterBody2D
 signal hit
 signal death
 
-const SPEED = 300.
-const DAMAGE_RATE = 1
 
+var DAMAGE_RATE = 1
+
+var char_name : String
 var inmune : bool
-var health = 5
+var health :=1
+var speed = 300.
 
 @onready var inmune_timer = $Inmunidad
+
 
 func _physics_process(delta):
 	
 	var inicio=get_tree().get_nodes_in_group("inicio")[0].global_position
 	var final=get_tree().get_nodes_in_group("final")[0].global_position
 	var direction = Input.get_vector("move_left", "move_right","move_up","move_down")
-	velocity=direction*SPEED
+	velocity=direction*speed
 	move_and_slide()
 	limites(inicio,final)
 	if direction.x>=0:
@@ -39,9 +42,11 @@ func dmg_control():
 
 func animar():
 	if velocity != Vector2(0,0):
-		$AnimatedSprite2D.play("walk")
+		$AnimatedSprite2D.play(char_name+"_walk")
 	else:
-		$AnimatedSprite2D.play("idle")
+		$AnimatedSprite2D.play(char_name+"_idle")
+
+
 
 func limites(inicio,final):
 	if global_position.x<inicio.x:

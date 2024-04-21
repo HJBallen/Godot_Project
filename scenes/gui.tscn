@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bal06qtaant0b"]
+
+[ext_resource type="Script" path="res://scripts/gui.gd" id="1_gup4q"]
+[ext_resource type="PackedScene" uid="uid://v8e678naupoy" path="res://scenes/corazon.tscn" id="2_no1xm"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_gup4q")
+
+[node name="corazon" parent="." instance=ExtResource("2_no1xm")]
+position = Vector2(15, 10)
