@@ -3,7 +3,12 @@ extends CanvasLayer
 @onready var player = %Player
 @onready var corazones = get_children()
 
-func _ready():
+func _on_player_hit():
+	print('hubo hit')
+	corazones[player.health-1].get_child(0).value=0
+
+
+func _on_player_ready():
 	print(player.health)
 	var new_corazon
 	for i in range(player.health-1):
@@ -11,7 +16,3 @@ func _ready():
 		new_corazon.global_position = corazones[i].global_position + Vector2(35,0)
 		corazones.append(new_corazon)
 		add_child(new_corazon)
-
-func _on_player_hit():
-	print('hubo hit')
-	corazones[player.health-1].get_child(0).value=0

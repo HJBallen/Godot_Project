@@ -10,6 +10,7 @@ func  _ready():
 			%Player.health = 3
 		"costeno":
 			%Player.health = 7
+	%Player.emit_signal("player_ready")
 
 func random_mob():
 	var new_zombie= preload("res://scenes/zombie.tscn").instantiate()

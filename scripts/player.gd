@@ -2,13 +2,14 @@ extends CharacterBody2D
 
 signal hit
 signal death
+signal player_ready;
 
 
 var DAMAGE_RATE = 1
 
 var char_name : String
 var inmune : bool
-var health :=1
+var health
 var speed = 300.
 
 @onready var inmune_timer = $Inmunidad
