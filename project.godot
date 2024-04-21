@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Avarage Colombian Project"
-run/main_scene="res://scenes/stage.tscn"
+run/main_scene="res://scenes/mainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GLOBAL="*res://scripts/global.gd"
 
 [input]
 
