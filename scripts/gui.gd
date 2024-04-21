@@ -11,8 +11,6 @@ func _ready():
 		corazones.append(new_corazon)
 		add_child(new_corazon)
 
-
-
 func _on_player_hit():
 	print('hubo hit')
 	corazones[player.health-1].get_child(0).value=0
