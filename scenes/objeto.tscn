@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://clgunanowih5l"]
 
-[ext_resource type="Script" path="res://scenes/objeto.gd" id="1_4mbwi"]
 [ext_resource type="Texture2D" uid="uid://donsyalxsbbip" path="res://assets/objects/healing/Food.png" id="1_6sb2x"]
+[ext_resource type="Script" path="res://scripts/objeto.gd" id="1_s4pdb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atig1"]
 
 [node name="Objeto" type="Area2D"]
-script = ExtResource("1_4mbwi")
+script = ExtResource("1_s4pdb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -2)
