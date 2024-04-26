@@ -11,7 +11,7 @@ var health = 5
 
 @onready var inmune_timer = $Inmunidad
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	var inicio=get_tree().get_nodes_in_group("inicio")[0].global_position
 	var final=get_tree().get_nodes_in_group("final")[0].global_position

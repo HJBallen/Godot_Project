@@ -14,3 +14,6 @@ func _ready():
 func _on_player_hit():
 	print('hubo hit')
 	corazones[player.health-1].get_child(0).value=0
+	
+func _on_objeto_heal():
+	print("ai nit hil")

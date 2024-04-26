@@ -1,9 +1,10 @@
 extends Node2D
 
+const Gameover=preload("res://scenes/game_over.tscn")
+
 func random_mob():
 	var new_zombie= preload("res://scenes/zombie.tscn").instantiate()
 	var new_esqueleto= preload("res://scenes/esqueleto.tscn").instantiate()
-	const Gameover=preload("res://scenes/game_over.tscn")
 	var rand = randi_range(1,2)
 	if	rand == 1:
 		return new_esqueleto
