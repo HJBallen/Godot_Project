@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwisrv221crb7"]
+[gd_scene load_steps=7 format=3 uid="uid://bwisrv221crb7"]
 
 [ext_resource type="Script" path="res://scripts/gui.gd" id="1_ahm25"]
 [ext_resource type="Texture2D" uid="uid://d27kq2e7mfarc" path="res://assets/backgrounds/scene.PNG" id="1_du02s"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_jykxd"]
 [ext_resource type="PackedScene" uid="uid://v8e678naupoy" path="res://scenes/corazon.tscn" id="2_3h6h4"]
 [ext_resource type="PackedScene" uid="uid://crlk8w0plbn4f" path="res://scenes/player.tscn" id="2_nquie"]
-[ext_resource type="PackedScene" uid="uid://clgunanowih5l" path="res://scenes/objeto.tscn" id="6_7cvmk"]
 
 [sub_resource type="Curve2D" id="Curve2D_klcus"]
 _data = {
@@ -18,6 +17,7 @@ script = ExtResource("1_jykxd")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 script = ExtResource("1_ahm25")
 
 [node name="corazon" parent="GUI" instance=ExtResource("2_3h6h4")]
@@ -25,6 +25,7 @@ position = Vector2(15, 10)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -90
+visible = false
 follow_viewport_enabled = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
@@ -34,6 +35,7 @@ texture = ExtResource("1_du02s")
 
 [node name="Player" parent="." instance=ExtResource("2_nquie")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(388, 192)
 
 [node name="SpawnPoint" type="Path2D" parent="Player"]
@@ -49,6 +51,7 @@ rotation = -0.00506208
 autostart = true
 
 [node name="Limit" type="Node2D" parent="."]
+visible = false
 
 [node name="inicio_stage" type="Marker2D" parent="Limit" groups=["inicio"]]
 position = Vector2(133, 76)
@@ -56,10 +59,6 @@ position = Vector2(133, 76)
 [node name="final_stage" type="Marker2D" parent="Limit" groups=["final"]]
 position = Vector2(1220, 612)
 
-[node name="Objeto" parent="." instance=ExtResource("6_7cvmk")]
-position = Vector2(558, 326)
-
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="hit" from="Player" to="GUI" method="_on_player_hit"]
 [connection signal="timeout" from="Player/SpawnPoint/Timer" to="." method="_on_timer_timeout"]
-[connection signal="heal" from="Objeto" to="GUI" method="_on_objeto_heal"]
