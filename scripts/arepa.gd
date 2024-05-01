@@ -8,6 +8,5 @@ func _on_body_entered(body):
 		player.heal(1)
 		queue_free()
 
-
 func _on_timer_timeout():
 	queue_free()
