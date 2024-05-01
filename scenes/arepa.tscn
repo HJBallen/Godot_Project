@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://clgunanowih5l"]
+
+[ext_resource type="Script" path="res://scripts/arepa.gd" id="1_rskge"]
+[ext_resource type="Texture2D" uid="uid://oy5y654ubaly" path="res://assets/objects/healing/arepa.png" id="2_weoag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atig1"]
+
+[node name="arepa" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_rskge")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.19209e-07, -3.57628e-07)
+scale = Vector2(0.8125, 0.75)
+texture = ExtResource("2_weoag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_atig1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

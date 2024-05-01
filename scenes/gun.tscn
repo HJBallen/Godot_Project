@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cj1klagkc0po3"]
+[gd_scene load_steps=19 format=3 uid="uid://cj1klagkc0po3"]
 
 [ext_resource type="Script" path="res://scripts/gun.gd" id="1_h800g"]
 [ext_resource type="Texture2D" uid="uid://b5w3mpb7o34lm" path="res://assets/guns/[animated] Shotgun_V1.02_SHELL_OPEN-export1.png" id="2_ky1xt"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://woqc56r73h44" path="res://assets/guns/[animated] Shotgun_V1.02_SHELL_OPEN-export12.png" id="13_khe4q"]
 [ext_resource type="Texture2D" uid="uid://b1vcorc23woo8" path="res://assets/guns/[animated] Shotgun_V1.02_SHELL_OPEN-export13.png" id="14_nh8ll"]
 [ext_resource type="Texture2D" uid="uid://ck7c5krk7at8s" path="res://assets/guns/[animated] Shotgun_V1.02_SHELL_OPEN-export14.png" id="15_dvusv"]
+[ext_resource type="AudioStream" uid="uid://3yms3pmsvcj8" path="res://assets/guns/sound_fx/20 Gauge Single.mp3" id="16_cnv7m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e26g2"]
 radius = 459.017
@@ -70,34 +71,36 @@ animations = [{
 }]
 
 [node name="Gun" type="Area2D"]
+position = Vector2(2, -2)
+rotation = -6.28319
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_h800g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 22)
+position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_e26g2")
 
 [node name="WeaponShaft" type="Marker2D" parent="."]
-position = Vector2(-1, 3.72529e-09)
+position = Vector2(0, 6.14673e-08)
 rotation = 0.0200248
 scale = Vector2(0.157143, 0.12)
 
 [node name="Pistol" type="AnimatedSprite2D" parent="WeaponShaft"]
-position = Vector2(57.2221, 78.1128)
-rotation = -0.0421564
+position = Vector2(-1.52588e-05, -1.52588e-05)
 scale = Vector2(4.71528, 8.88205)
 sprite_frames = SubResource("SpriteFrames_edyki")
 animation = &"shoot"
-frame_progress = 0.427227
+frame_progress = 0.218433
+speed_scale = 2.0
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponShaft/Pistol"]
 unique_name_in_owner = true
 position = Vector2(20.5841, -1.28167)
 scale = Vector2(2.80938, 3.24842)
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_cnv7m")
+volume_db = -30.0
 
 [connection signal="animation_looped" from="WeaponShaft/Pistol" to="." method="_on_pistol_animation_looped"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

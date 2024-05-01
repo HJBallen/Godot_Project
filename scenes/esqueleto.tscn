@@ -210,10 +210,12 @@ states/walk/position = Vector2(356.054, 100)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_els8e"), "walk", "hurt", SubResource("AnimationNodeStateMachineTransition_g3g4p"), "hurt", "walk", SubResource("AnimationNodeStateMachineTransition_6chht"), "hurt", "die", SubResource("AnimationNodeStateMachineTransition_n6ajk"), "walk", "die", SubResource("AnimationNodeStateMachineTransition_kjucn")]
 graph_offset = Vector2(71.0536, -62.9344)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0ubp4"]
-radius = 15.5952
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h1r0r"]
+radius = 13.3333
+height = 55.5556
 
 [node name="Esqueleto" type="CharacterBody2D" groups=["mobs"]]
+scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 3
 platform_floor_layers = 4294967040
@@ -241,8 +243,8 @@ parameters/conditions/is_hurt = false
 parameters/conditions/is_walking = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 29)
+position = Vector2(-3, 9)
 scale = Vector2(0.9, 0.9)
-shape = SubResource("CircleShape2D_0ubp4")
+shape = SubResource("CapsuleShape2D_h1r0r")
 
 [connection signal="animation_finished" from="Sprite2D/AnimationTree" to="." method="on_animations_finished"]

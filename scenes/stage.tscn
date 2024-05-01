@@ -1,31 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwisrv221crb7"]
+[gd_scene load_steps=11 format=3 uid="uid://bwisrv221crb7"]
 
 [ext_resource type="Script" path="res://scripts/gui.gd" id="1_ahm25"]
 [ext_resource type="Texture2D" uid="uid://d27kq2e7mfarc" path="res://assets/backgrounds/scene.PNG" id="1_du02s"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_jykxd"]
 [ext_resource type="PackedScene" uid="uid://v8e678naupoy" path="res://scenes/corazon.tscn" id="2_3h6h4"]
 [ext_resource type="PackedScene" uid="uid://crlk8w0plbn4f" path="res://scenes/player.tscn" id="2_nquie"]
+[ext_resource type="PackedScene" uid="uid://clgunanowih5l" path="res://scenes/arepa.tscn" id="6_q8fdn"]
+[ext_resource type="AudioStream" uid="uid://cy1vrlr6fihxe" path="res://assets/UI/music/game_music.mp3" id="7_ynxrd"]
+[ext_resource type="Script" path="res://scripts/gameMusic.gd" id="8_n36l7"]
+[ext_resource type="PackedScene" uid="uid://dotxm8f601sd0" path="res://scenes/jefe.tscn" id="9_ku6g6"]
 
 [sub_resource type="Curve2D" id="Curve2D_o6b5w"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 330, 88.0393, 0, 0, 0, 0, 1813, 81.3494, 0, 0, 0, 0, 1812, 1116.24, 0, 0, 0, 0, 322, 1115.13, 0, 0, 0, 0, 322, 96.7149, 0, 0, 0, 0, 330, 88.0393)
+}
+point_count = 6
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_jykxd")
-
-[node name="Player" parent="." instance=ExtResource("2_nquie")]
-unique_name_in_owner = true
-position = Vector2(1067, 605)
-
-[node name="Path2D" type="Path2D" parent="Player"]
-position = Vector2(-1067, -605)
-curve = SubResource("Curve2D_o6b5w")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
-unique_name_in_owner = true
-position = Vector2(-198, -182)
-rotation = -0.00506208
-
-[node name="Timer" type="Timer" parent="Player/Path2D"]
-autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -90
@@ -36,14 +28,6 @@ position = Vector2(878.75, 469)
 scale = Vector2(1.31423, 1.38872)
 texture = ExtResource("1_du02s")
 
-[node name="Limit" type="Node2D" parent="."]
-
-[node name="inicio_stage" type="Marker2D" parent="Limit" groups=["inicio"]]
-position = Vector2(133, 76)
-
-[node name="final_stage" type="Marker2D" parent="Limit" groups=["final"]]
-position = Vector2(1220, 612)
-
 [node name="GUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_ahm25")
@@ -51,7 +35,36 @@ script = ExtResource("1_ahm25")
 [node name="corazon" parent="GUI" instance=ExtResource("2_3h6h4")]
 position = Vector2(15, 10)
 
+[node name="ob_salud" parent="." instance=ExtResource("6_q8fdn")]
+position = Vector2(714, 267)
+scale = Vector2(1.99551, 1.99338)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ynxrd")
+volume_db = -20.0
+script = ExtResource("8_n36l7")
+
+[node name="Player" parent="." instance=ExtResource("2_nquie")]
+unique_name_in_owner = true
+position = Vector2(1067, 605)
+
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-1067, -581)
+scale = Vector2(1, 0.97112)
+curve = SubResource("Curve2D_o6b5w")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(330, 88.0393)
+rotation = -0.00451097
+
+[node name="Timer" type="Timer" parent="Player/Path2D"]
+autostart = true
+
+[node name="jefe" parent="." instance=ExtResource("9_ku6g6")]
+
 [connection signal="death" from="Player" to="." method="_on_player_death"]
+[connection signal="healed" from="Player" to="GUI" method="_on_player_healed"]
 [connection signal="hit" from="Player" to="GUI" method="_on_player_hit"]
 [connection signal="player_ready" from="Player" to="GUI" method="_on_player_ready"]
 [connection signal="timeout" from="Player/Path2D/Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c3dp6q2l5edif"]
+
+[node name="Limit" type="Node2D"]
+
+[node name="inicio_stage" type="Marker2D" parent="." groups=["inicio"]]
+position = Vector2(133, 76)
+
+[node name="final_stage" type="Marker2D" parent="." groups=["final"]]
+position = Vector2(1220, 612)
