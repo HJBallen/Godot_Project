@@ -6,10 +6,12 @@ func  _ready():
 	match GLOBAL.character[GLOBAL.selected_char]:
 		"rolo":
 			%Player.health = 5
+			
 		"paisa":
 			%Player.health = 3
 		"costeno":
 			%Player.health = 7
+	GLOBAL.maxHealth = %Player.health
 	%Player.emit_signal("player_ready")
 
 func random_mob():
@@ -34,5 +36,4 @@ func _on_timer_timeout():
 	pass
 
 func _on_player_death():
-	print("muelte")
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")

@@ -3,13 +3,14 @@ extends CharacterBody2D
 signal hit
 signal death
 signal player_ready;
+signal healed
 
 
 var DAMAGE_RATE = 1
 
 var char_name : String
 var inmune : bool
-var health
+var health: int
 var speed = 300.
 
 @onready var inmune_timer = $Inmunidad
@@ -17,12 +18,12 @@ var speed = 300.
 
 func _physics_process(delta):
 	
-	var inicio=get_tree().get_nodes_in_group("inicio")[0].global_position
-	var final=get_tree().get_nodes_in_group("final")[0].global_position
+	#var inicio=get_tree().get_nodes_in_group("inicio")[0].global_position
+	#var final=get_tree().get_nodes_in_group("final")[0].global_position
 	var direction = Input.get_vector("move_left", "move_right","move_up","move_down")
 	velocity=direction*speed
 	move_and_slide()
-	limites(inicio,final)
+	#limites(inicio,final)
 	if direction.x>=0:
 		$AnimatedSprite2D.flip_h=false
 		animar()
@@ -30,15 +31,13 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h=true
 		animar()
 
-
 func inmunidad():
 	inmune_timer.start()
 	
-
 func dmg_control():
 	if  health > 0:
 		health-=1
-	elif health == 0:
+	if health == 0:
 		emit_signal('death')
 
 func animar():
@@ -46,8 +45,6 @@ func animar():
 		$AnimatedSprite2D.play(char_name+"_walk")
 	else:
 		$AnimatedSprite2D.play(char_name+"_idle")
-
-
 
 func limites(inicio,final):
 	if global_position.x<inicio.x:
@@ -67,3 +64,14 @@ func _on_Player_body_entered(body):
 
 func _on_inmunidad_timeout():
 	inmune = false
+
+func heal(cantidad):
+	if health < GLOBAL.maxHealth:
+		health+= cantidad
+		if health > GLOBAL.maxHealth:
+			health = GLOBAL.maxHealth
+		emit_signal("healed")
+	else:
+		pass
+	
+	
