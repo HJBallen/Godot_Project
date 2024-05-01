@@ -56,7 +56,7 @@ curve = SubResource("Curve2D_o6b5w")
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
 unique_name_in_owner = true
 position = Vector2(330, 88.0393)
-rotation = -0.00451097
+rotation = -0.00451103
 
 [node name="Timer" type="Timer" parent="Player/Path2D"]
 autostart = true

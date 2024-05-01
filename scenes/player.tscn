@@ -415,5 +415,5 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_Player_body_entered"]
-[connection signal="timeout" from="Inmunidad" to="." method="_on_inmunidad_timeout"]
 [connection signal="timeout" from="Inmunidad" to="." method="inmunidad"]
+[connection signal="timeout" from="Inmunidad" to="." method="_on_inmunidad_timeout"]
