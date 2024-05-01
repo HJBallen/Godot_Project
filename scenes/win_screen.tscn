@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://1xpcsgdwj4kw"]
+[gd_scene load_steps=2 format=3 uid="uid://d8qa62rvgqp"]
 
-[ext_resource type="Script" path="res://scripts/GameOver.gd" id="1_goprl"]
+[ext_resource type="Script" path="res://scripts/GameOver.gd" id="1_01qgb"]
 
 [node name="GameOver" type="CanvasLayer"]
-script = ExtResource("1_goprl")
+script = ExtResource("1_01qgb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -15,12 +15,12 @@ color = Color(0.235294, 0.235294, 0.235294, 0.32549)
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 175.0
-offset_top = 152.0
-offset_right = 957.0
-offset_bottom = 236.0
+offset_left = 378.0
+offset_top = 161.0
+offset_right = 727.0
+offset_bottom = 245.0
 theme_override_font_sizes/font_size = 61
-text = "LE PUSIERON LAS BOTICAS
+text = "GANASTE!!!
 "
 
 [node name="Retry" type="Button" parent="."]

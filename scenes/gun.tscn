@@ -92,7 +92,6 @@ scale = Vector2(4.71528, 8.88205)
 sprite_frames = SubResource("SpriteFrames_edyki")
 animation = &"shoot"
 frame_progress = 0.218433
-speed_scale = 2.0
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponShaft/Pistol"]
 unique_name_in_owner = true
@@ -101,6 +100,6 @@ scale = Vector2(2.80938, 3.24842)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_cnv7m")
-volume_db = -30.0
+volume_db = -15.0
 
 [connection signal="animation_looped" from="WeaponShaft/Pistol" to="." method="_on_pistol_animation_looped"]

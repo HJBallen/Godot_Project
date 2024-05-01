@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwisrv221crb7"]
+[gd_scene load_steps=10 format=3 uid="uid://bwisrv221crb7"]
 
 [ext_resource type="Script" path="res://scripts/gui.gd" id="1_ahm25"]
 [ext_resource type="Texture2D" uid="uid://d27kq2e7mfarc" path="res://assets/backgrounds/scene.PNG" id="1_du02s"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://clgunanowih5l" path="res://scenes/arepa.tscn" id="6_q8fdn"]
 [ext_resource type="AudioStream" uid="uid://cy1vrlr6fihxe" path="res://assets/UI/music/game_music.mp3" id="7_ynxrd"]
 [ext_resource type="Script" path="res://scripts/gameMusic.gd" id="8_n36l7"]
-[ext_resource type="PackedScene" uid="uid://dotxm8f601sd0" path="res://scenes/jefe.tscn" id="9_ku6g6"]
 
 [sub_resource type="Curve2D" id="Curve2D_o6b5w"]
 _data = {
@@ -18,6 +17,7 @@ point_count = 6
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_jykxd")
+mobs_max = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -90
@@ -56,15 +56,18 @@ curve = SubResource("Curve2D_o6b5w")
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
 unique_name_in_owner = true
 position = Vector2(330, 88.0393)
-rotation = -0.00451097
+rotation = -0.00451103
 
 [node name="Timer" type="Timer" parent="Player/Path2D"]
 autostart = true
 
-[node name="jefe" parent="." instance=ExtResource("9_ku6g6")]
+[node name="spawn_jefe" type="Timer" parent="."]
+wait_time = 90.0
+autostart = true
 
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="healed" from="Player" to="GUI" method="_on_player_healed"]
 [connection signal="hit" from="Player" to="GUI" method="_on_player_hit"]
 [connection signal="player_ready" from="Player" to="GUI" method="_on_player_ready"]
 [connection signal="timeout" from="Player/Path2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="spawn_jefe" to="." method="_on_spawn_jefe_timeout"]
