@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal  mob_dead
+
 @onready var animation_tree = $Sprite2D/AnimationTree
 @onready var player = get_node("/root/Stage/Player")
 
@@ -15,6 +17,11 @@ func _physics_process(delta):
 	if not hurt:
 		move_and_slide()
 
+func change_collisions():
+	set_collision_layer_value(2,false)
+	set_collision_mask_value(1,false)
+	set_collision_mask_value(2,false)
+	pass
 
 func spawn_arepa():
 	var arepa = preload("res://scenes/arepa.tscn").instantiate()
@@ -50,12 +57,13 @@ func update_animations():
 		animation_tree["parameters/conditions/is_hurt"] = false
 	if dead:
 		animation_tree["parameters/conditions/is_died"] = true
+		change_collisions()
 		
 	else:
 		animation_tree["parameters/conditions/is_died"] = false
 
-func take_damage():
-	health -= 1
+func take_damage(damage):
+	health -= damage
 	hurt = true
 	if health == 0:
 		dead = true
@@ -65,4 +73,5 @@ func on_animations_finished(anim_name):
 		hurt = false
 	if anim_name == "die":
 		spawn_healing_object()
+		emit_signal('mob_dead')
 		queue_free()
