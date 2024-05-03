@@ -3,10 +3,19 @@ extends CanvasLayer
 @onready var player = %Player
 @onready var corazones = get_children()
 
+var shield_heart
+var is_shield_regen = false
 
+func _process(delta):
+	if is_shield_regen:
+		if shield_heart.value == 100:
+			is_shield_regen = false
+			return null
+		shield_heart.value+=1
+		
 
 func _on_player_hit():
-	corazones[player.health-1].get_child(0).value=0
+	corazones[player.health].get_child(0).value=0
 
 
 func _on_player_ready():
@@ -27,3 +36,24 @@ func _on_player_healed():
 		full_health()
 	else:
 		corazones[player.health-1].get_child(0).value=1
+
+
+func _on_player_get_shield():
+	if shield_heart == null:
+		print(corazones.size())
+		var new_shield_heart = preload("res://scenes/shield_bar.tscn").instantiate()
+		new_shield_heart.global_position = corazones[corazones.size()-1].global_position + Vector2(35,0)
+		shield_heart = new_shield_heart.get_child(0)
+		shield_heart.value = 100
+		add_child(new_shield_heart)
+	pass # Replace with function body.
+
+
+func _on_player_shield_broken():
+	shield_heart.value = 0
+	pass # Replace with function body.
+
+
+func _on_player_regen_shield():
+	is_shield_regen = true
+	pass # Replace with function body.

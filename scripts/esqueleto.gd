@@ -1,19 +1,19 @@
 extends CharacterBody2D
 
-signal  mob_dead
+signal  mob_dead(mob)
 
 @onready var animation_tree = $Sprite2D/AnimationTree
 @onready var playback = $Sprite2D/AnimationTree.get("parameters/playback")
 @onready var player = get_node("/root/Stage/Player")
 
-var health := 3
+var health := 4
 var hurt : bool
 var dead : bool
 
 func _physics_process(delta):
 	
 	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * 160
+	velocity = direction * GLOBAL.mobs_speed
 	update_animations()
 	if not hurt:
 		move_and_slide()
@@ -61,7 +61,7 @@ func update_animations():
 func take_damage(damage):
 	health -= damage
 	hurt = true
-	if health == 0:
+	if health <= 0:
 		dead = true
 
 func on_animations_finished(anim_name):
@@ -70,5 +70,5 @@ func on_animations_finished(anim_name):
 	if anim_name == "die":
 		change_collisions()
 		spawn_healing_object()
-		emit_signal("mob_dead")
+		mob_dead.emit(self)
 		queue_free()

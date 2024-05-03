@@ -23,14 +23,13 @@ func _ready():
 
 func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * 160
+	velocity = direction * 300
 	update_animations()
 	if not hurt:
 		move_and_slide()
 
 func dead():
 	emit_signal("jefe_dead")
-	parent.connect("jefe_dead", parent._on_jefe_dead)
 	audios.stream = GLOBAL.uribe_dijo[7]
 	audios.play(0)
 	visible = false
@@ -59,12 +58,12 @@ func update_health_bar():
 	pass
 
 func take_damage(damage):
-	if shield != 0:
+	if shield > 0:
 		shield -= damage
 		update_shield_bar()
 	else:
 		health -= damage
-		if health == 0:
+		if health <= 0:
 			dead()
 		update_health_bar()
 	timer_escudo.start(0)

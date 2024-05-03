@@ -1,7 +1,7 @@
 extends Area2D
 
-
 var travelled_distance=0
+var dmg:=0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -17,4 +17,4 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body.has_method("take_damage"):
 		queue_free()
-		body.take_damage(1)
+		body.take_damage(dmg)
