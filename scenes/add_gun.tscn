@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://583pdkf7s3iv"]
+
+[ext_resource type="Script" path="res://scripts/add_gun.gd" id="1_cthuw"]
+[ext_resource type="Texture2D" uid="uid://deul315kd4hlr" path="res://assets/objects/ofensivos/add_gun.png" id="2_esq18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atig1"]
+size = Vector2(51, 20)
+
+[node name="add_gun" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_cthuw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-07, 2.38419e-07)
+scale = Vector2(0.540541, 0.571429)
+texture = ExtResource("2_esq18")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_atig1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwisrv221crb7"]
+[gd_scene load_steps=8 format=3 uid="uid://bwisrv221crb7"]
 
 [ext_resource type="Script" path="res://scripts/gui.gd" id="1_ahm25"]
-[ext_resource type="Texture2D" uid="uid://d27kq2e7mfarc" path="res://assets/backgrounds/scene.PNG" id="1_du02s"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="1_jykxd"]
 [ext_resource type="PackedScene" uid="uid://v8e678naupoy" path="res://scenes/corazon.tscn" id="2_3h6h4"]
 [ext_resource type="PackedScene" uid="uid://crlk8w0plbn4f" path="res://scenes/player.tscn" id="2_nquie"]
-[ext_resource type="PackedScene" uid="uid://clgunanowih5l" path="res://scenes/arepa.tscn" id="6_q8fdn"]
 [ext_resource type="AudioStream" uid="uid://cy1vrlr6fihxe" path="res://assets/UI/music/game_music.mp3" id="7_ynxrd"]
 [ext_resource type="Script" path="res://scripts/gameMusic.gd" id="8_n36l7"]
 
@@ -17,16 +15,12 @@ point_count = 6
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_jykxd")
-mobs_max = 3
+mobs_max = 2
+bajas_objeto = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -90
 follow_viewport_enabled = true
-
-[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(878.75, 469)
-scale = Vector2(1.31423, 1.38872)
-texture = ExtResource("1_du02s")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -34,10 +28,6 @@ script = ExtResource("1_ahm25")
 
 [node name="corazon" parent="GUI" instance=ExtResource("2_3h6h4")]
 position = Vector2(15, 10)
-
-[node name="ob_salud" parent="." instance=ExtResource("6_q8fdn")]
-position = Vector2(714, 267)
-scale = Vector2(1.99551, 1.99338)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ynxrd")
@@ -68,6 +58,9 @@ autostart = true
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="healed" from="Player" to="GUI" method="_on_player_healed"]
 [connection signal="hit" from="Player" to="GUI" method="_on_player_hit"]
+[connection signal="player_get_shield" from="Player" to="GUI" method="_on_player_get_shield"]
 [connection signal="player_ready" from="Player" to="GUI" method="_on_player_ready"]
+[connection signal="regen_shield" from="Player" to="GUI" method="_on_player_regen_shield"]
+[connection signal="shield_broken" from="Player" to="GUI" method="_on_player_shield_broken"]
 [connection signal="timeout" from="Player/Path2D/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="spawn_jefe" to="." method="_on_spawn_jefe_timeout"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://w7vwyimvavcp"]
+
+[ext_resource type="Script" path="res://scripts/atk_speed.gd" id="1_j3pa2"]
+[ext_resource type="Texture2D" uid="uid://5f5xjgx5tl5d" path="res://assets/objects/ofensivos/atk_speed.png" id="2_t2nrt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atig1"]
+
+[node name="atk_speed" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_j3pa2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-07, 2.38419e-07)
+scale = Vector2(0.540541, 0.571429)
+texture = ExtResource("2_t2nrt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_atig1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
