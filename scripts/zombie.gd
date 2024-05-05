@@ -10,7 +10,6 @@ var hurt : bool
 var dead : bool
 
 func _physics_process(delta):
-	
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * GLOBAL.mobs_speed
 	update_animations()

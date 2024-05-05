@@ -17,6 +17,7 @@ var pause_menu
 
 var paused := false
 
+#Carga el personaje seleccionado
 func  _ready():
 	%Player.char_name = GLOBAL.character[GLOBAL.selected_char]
 	match GLOBAL.character[GLOBAL.selected_char]:
@@ -33,11 +34,12 @@ func  _ready():
 	%Player.emit_signal("player_ready")
 
 func _process(delta):
-	if jefes_muertos == 3:
+	if jefes_muertos == 5:
 		get_tree().change_scene_to_file("res://scenes/win_screen.tscn")
 	if Input.is_action_just_pressed("pause"):
 		paused_menu()
 
+#Genera un mob aleatorio para spawnear
 func random_mob():
 	var new_zombie= preload("res://scenes/zombie.tscn").instantiate()
 	var new_esqueleto= preload("res://scenes/esqueleto.tscn").instantiate()
@@ -48,6 +50,7 @@ func random_mob():
 	else:
 		return new_zombie
 
+#Spawnea un mob
 func spawn_mobs():
 	if cant_mobs < mobs_max:
 		var new_mob = random_mob()
@@ -59,6 +62,7 @@ func spawn_mobs():
 	else:
 		pass
 
+#Spawnea jefe
 func spawn_jefe():
 	if jefe == null:
 		var new_jefe= preload("res://scenes/jefe.tscn").instantiate()
@@ -70,6 +74,7 @@ func spawn_jefe():
 	else:
 		pass
 
+#Spawnea uno de 2 objetos defensivos
 func spawn_defensive_object(mob):
 	var rng = randi_range(1,2)
 	match rng:
@@ -85,6 +90,7 @@ func spawn_defensive_object(mob):
 			pass
 	pass
 
+#Spawnea uno de 3 objetos ofensivos
 func spawn_ofensive_object(mob):
 	var rng = randi_range(1,3)
 	match rng:
@@ -105,6 +111,7 @@ func spawn_ofensive_object(mob):
 			pass
 	pass
 
+#Spawnea un objeto defensivo o uno objeto ofensivo
 func spawn_object(mob):
 	var objeto = randi_range(1,2)
 	match objeto:
@@ -114,8 +121,8 @@ func spawn_object(mob):
 			spawn_ofensive_object(mob)
 	pass
 
+#Pausa el juego y despliega el menu de pausa
 func paused_menu():
-	print(paused)
 	if paused:
 		pause_menu.queue_free()
 		get_tree().paused = false
@@ -128,24 +135,28 @@ func paused_menu():
 		pass
 	paused = !paused
 
+#Llama la funcion spawn_mobs() cada cierto tiempo
 func _on_timer_timeout():
 	spawn_mobs()
 	pass
 
+#Se ejecuta cuando el jugador muere.
 func _on_player_death():
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
+#Se ejecuta cada que el jugador acaba con un jefe
 func _on_jefe_dead():
-	print("Murio uribe")
 	jefes_muertos+=1
 	pass
 
+#Aumenta la velocidad de los mobs hasta un limite
 func increase_mobs_speed():
 	if GLOBAL.mobs_speed < 250:
 		GLOBAL.mobs_speed += 10
 	elif GLOBAL.mobs_speed > 250:
 		GLOBAL.mobs_speed = 250
 
+#Se ejecuta cada que un mob es derrotado
 func _on_mob_dead(mob):
 	cant_mobs -=1
 	bajas_totales +=1
@@ -153,22 +164,21 @@ func _on_mob_dead(mob):
 	if racha_bajas == bajas_objeto:
 		increase_mobs_speed()
 		racha_bajas = 0
-		bajas_objeto *=2
+		bajas_objeto += 5
 		if mobs_max <150:
-			mobs_max+=10
+			mobs_max+=12
 		else:
 			mobs_max = 150
 		spawn_object(mob)
 
+#Llama a la funcion spawn_jefe() cada cierto tiempo
 func _on_spawn_jefe_timeout():
 	spawn_jefe()
-	pass # Replace with function body.
 
+#Reanuda el juego
 func _on_resume():
 	paused_menu()
-	pass
-
+#Regresa a la pantalla principal
 func _on_exit():
-	get_tree()
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
-	pass

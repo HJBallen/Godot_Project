@@ -7,6 +7,5 @@ func _on_body_entered(body):
 		player.increase_speed()
 		queue_free()
 
-
 func _on_timer_timeout():
 	queue_free()

@@ -25,11 +25,11 @@ var atk_speed :=1
 func _ready():
 	guns.append(get_node("Gun"))
 
+#Funcion que se ejecuta cada frame
 func _physics_process(delta):
 	var direction = Input.get_vector("move_left", "move_right","move_up","move_down")
 	velocity=direction*speed
 	move_and_slide()
-	#limites(inicio,final)
 	if direction.x>=0:
 		$AnimatedSprite2D.flip_h=false
 		animar()
@@ -37,10 +37,12 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h=true
 		animar()
 
+#Se encarga de hacer inmune al jugador luego de recibir un hit
 func inmunidad():
 	inmune = true
 	inmune_timer.start()
-	
+
+#Controla el daño recibido
 func dmg_control():
 	if inmune == true:
 		return null
@@ -57,25 +59,15 @@ func dmg_control():
 			shield = false
 		inmunidad()
 
+#Ejecuta las animacions "Idle" y "Walk"
 func animar():
 	if velocity != Vector2(0,0):
 		$AnimatedSprite2D.play(char_name+"_walk")
 	else:
 		$AnimatedSprite2D.play(char_name+"_idle")
 
-func limites(inicio,final):
-	if global_position.x<inicio.x:
-		global_position.x=inicio.x+5
-	if global_position.x>final.x:
-		global_position.x=final.x-5
-
-	if global_position.y<inicio.y:
-		global_position.y=inicio.y-5
-	if global_position.y>final.y:
-		global_position.y=final.y+5
-
+#Aumenta la velocidad de ataque de las armas del jugador
 func increase_atk_speed():
-	print("atk_speed_up")
 	if atk_speed < 2:
 		atk_speed +=atk_speed*0.1
 	if atk_speed >=2:
@@ -83,21 +75,21 @@ func increase_atk_speed():
 	for i in guns:
 			i.animation_sprite.speed_scale = atk_speed
 
+#Aumenta el daño que inflige el jugador
 func increase_damage():
-	print("dmg_up")
 	if DAMAGE_RATE<3:
 		DAMAGE_RATE+=1
 
+#Aumenta la velocidad de movimiento del jugador.
 func increase_speed():
-	print("speed_up")
 	if speed < 400:
 		speed +=10
 	if speed > 400:
 		speed = 400
 	pass
 
+#Añade un arma al jugador. (El maximo es 4)
 func add_gun():
-	print("gun_added")
 	if gun_number<4:
 		var new_gun = preload("res://scenes/gun.tscn").instantiate()
 		match gun_number:
@@ -113,18 +105,21 @@ func add_gun():
 		guns.append(new_gun)
 		call_deferred("add_child",new_gun)
 
+#Añade un escudo a la vida del jugador. (Recibe un hit y se deshabilita por un tiempo)
 func get_shield():
-	print("shiel_added")
 	shield = true
 	player_get_shield.emit()
 
+#Se ejecuta cuando un cuerpo colisiona con el area de daño del jugador
 func _on_Player_body_entered(body):
 	if body.is_in_group("mobs"):
 		dmg_control()
 
+#Se ejcuta cuando el temporizador de la inmunidad se acaba.
 func _on_inmunidad_timeout():
 	inmune = false
 
+#Se ejecuta cuando el jugador colisiona con un objeto de salud. Cura al jugador
 func heal(cantidad):
 	if health < GLOBAL.maxHealth:
 		health+= cantidad
@@ -134,6 +129,7 @@ func heal(cantidad):
 	else:
 		pass
 
+#Se ejcuta cuando el temporizador del escudo se acaba.
 func _on_shield_timer_timeout():
 	shield = true
 	regen_shield.emit()

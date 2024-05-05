@@ -43,16 +43,19 @@ func update_animations():
 	if hurt:
 		animations.play("hurt")
 
+#Actualiza la barra de escudo del jefe
 func update_shield_bar():
 	shield_bar.value = shield
 	pass
 
+#Selecciona aleatoriamente una frase para reproducir
 func uribe_dijo():
 	var quote = randi_range(1,7)
 	audios.stream = GLOBAL.uribe_dijo[quote-1]
 	audios.play(0)
 	pass
 
+#Actualiza la barra de vida del jugador
 func update_health_bar():
 	health_bar.value = health
 	pass
@@ -77,12 +80,12 @@ func _on_animation_finished(anim_name):
 			normal=true
 	pass # Replace with function body.
 
-
+#Audio que se reproduce al morir el jefe
 func _on_audio_finished():
 	if audios.stream == GLOBAL.uribe_dijo[7]:
 		queue_free()
 
-
+#Regenera el escudo del jefe pasado un tiempo
 func _on_timer_escudo_timeout():
 	shield=5
 	update_shield_bar()

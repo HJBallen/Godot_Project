@@ -12,12 +12,8 @@ func _process(delta):
 			is_shield_regen = false
 			return null
 		shield_heart.value+=1
-		
 
-func _on_player_hit():
-	corazones[player.health].get_child(0).value=0
-
-
+#Se ejecuta cuando el jugadro a cargado por completo en el arborl de escenas
 func _on_player_ready():
 	var new_corazon
 	for i in range(player.health-1):
@@ -26,18 +22,23 @@ func _on_player_ready():
 		corazones.append(new_corazon)
 		add_child(new_corazon)
 
+#Se ejcuta cuando un jugador recibe daño
+func _on_player_hit():
+	corazones[player.health].get_child(0).value=0
 
+#Se ejcuta cuando el jugador tiene la vida maxima
 func full_health():
 	for i in corazones:
 			i.get_child(0).value=1
 
+#Se ejcuta cada que el jugador se cura
 func _on_player_healed():
 	if player.health>=GLOBAL.maxHealth:
 		full_health()
 	else:
 		corazones[player.health-1].get_child(0).value=1
 
-
+#Se ejecuta cuando el jugador obtiene el escudo
 func _on_player_get_shield():
 	if shield_heart == null:
 		print(corazones.size())
@@ -48,12 +49,12 @@ func _on_player_get_shield():
 		add_child(new_shield_heart)
 	pass # Replace with function body.
 
-
+#Se ejecuta cuando el escudo del jugador rompe
 func _on_player_shield_broken():
 	shield_heart.value = 0
 	pass # Replace with function body.
 
-
+#Se ejecuta cuando el escudo pasa a regenerarse
 func _on_player_regen_shield():
 	is_shield_regen = true
 	pass # Replace with function body.
