@@ -14,13 +14,18 @@ _data = {
 point_count = 6
 
 [node name="Stage" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_jykxd")
 mobs_max = 2
 bajas_objeto = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -90
-follow_viewport_enabled = true
+layer = -30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1153.0
+offset_bottom = 649.0
+color = Color(0.188235, 0.607843, 0.243137, 0.87451)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -36,7 +41,7 @@ script = ExtResource("8_n36l7")
 
 [node name="Player" parent="." instance=ExtResource("2_nquie")]
 unique_name_in_owner = true
-position = Vector2(1067, 605)
+position = Vector2(577, 324)
 
 [node name="Path2D" type="Path2D" parent="Player"]
 position = Vector2(-1067, -581)

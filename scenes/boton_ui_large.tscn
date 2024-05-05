@@ -25,21 +25,10 @@ offset_bottom = 192.0
 theme_override_constants/outline_size = 0
 theme_override_constants/icon_max_width = 0
 theme_override_fonts/font = ExtResource("1_vs66k")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_hmsrr")
 theme_override_styles/hover = SubResource("StyleBoxTexture_bjqno")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ovmbq")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_coftg")
 text = "START"
 script = ExtResource("5_3i6bp")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 56.0
-offset_top = 8.0
-offset_right = 103.0
-offset_bottom = 42.0
-theme_override_fonts/font = ExtResource("1_vs66k")
-theme_override_font_sizes/font_size = 28
-text = "BTN"
-horizontal_alignment = 1

@@ -13,6 +13,10 @@ var racha_bajas:=0
 
 var jefe
 
+var pause_menu
+
+var paused := false
+
 func  _ready():
 	%Player.char_name = GLOBAL.character[GLOBAL.selected_char]
 	match GLOBAL.character[GLOBAL.selected_char]:
@@ -31,7 +35,8 @@ func  _ready():
 func _process(delta):
 	if jefes_muertos == 3:
 		get_tree().change_scene_to_file("res://scenes/win_screen.tscn")
-	
+	if Input.is_action_just_pressed("pause"):
+		paused_menu()
 
 func random_mob():
 	var new_zombie= preload("res://scenes/zombie.tscn").instantiate()
@@ -109,6 +114,20 @@ func spawn_object(mob):
 			spawn_ofensive_object(mob)
 	pass
 
+func paused_menu():
+	print(paused)
+	if paused:
+		pause_menu.queue_free()
+		get_tree().paused = false
+	else:
+		pause_menu = preload("res://scenes/pause_scene.tscn").instantiate()
+		pause_menu.resume.connect(_on_resume)
+		pause_menu.exit.connect(_on_exit)
+		add_child(pause_menu)
+		get_tree().paused = true
+		pass
+	paused = !paused
+
 func _on_timer_timeout():
 	spawn_mobs()
 	pass
@@ -144,3 +163,12 @@ func _on_mob_dead(mob):
 func _on_spawn_jefe_timeout():
 	spawn_jefe()
 	pass # Replace with function body.
+
+func _on_resume():
+	paused_menu()
+	pass
+
+func _on_exit():
+	get_tree()
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	pass
