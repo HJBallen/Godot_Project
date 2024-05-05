@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bqd7rgwhgrg0s"]
 
-[ext_resource type="Script" path="res://scenes/pause_scene.gd" id="1_lf2k2"]
+[ext_resource type="Script" path="res://scripts/pause_scene.gd" id="1_lf2k2"]
 [ext_resource type="Texture2D" uid="uid://f0iasajm8tth" path="res://assets/UI/10 Border 01-export.png" id="1_xrhnd"]
 [ext_resource type="FontFile" uid="uid://c4vjb5mibtjjs" path="res://assets/UI/PixelifySans-Regular.ttf" id="2_hdl34"]
 [ext_resource type="PackedScene" uid="uid://bs74jkpu6jbtw" path="res://scenes/boton_ui_large.tscn" id="3_5wg5k"]
