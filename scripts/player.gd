@@ -4,6 +4,7 @@ signal hit
 signal death
 signal player_ready;
 signal healed
+signal new_gun
 signal player_get_shield
 signal shield_broken
 signal regen_shield
@@ -102,6 +103,7 @@ func add_gun():
 			3:
 				gun_number+=1
 				new_gun.global_position = Vector2(80,-48)
+		emit_signal("new_gun")
 		guns.append(new_gun)
 		call_deferred("add_child",new_gun)
 

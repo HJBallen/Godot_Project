@@ -52,15 +52,13 @@ func random_mob():
 
 #Spawnea un mob
 func spawn_mobs():
-	if cant_mobs < mobs_max:
+	
 		var new_mob = random_mob()
 		%PathFollow2D.progress_ratio=randf()
 		new_mob.global_position = %PathFollow2D.global_position
 		new_mob.mob_dead.connect(_on_mob_dead)
 		add_child(new_mob)
 		cant_mobs +=1
-	else:
-		pass
 
 #Spawnea jefe
 func spawn_jefe():
@@ -156,6 +154,12 @@ func increase_mobs_speed():
 	elif GLOBAL.mobs_speed > 250:
 		GLOBAL.mobs_speed = 250
 
+func increase_mobs():
+	if $Player/Path2D/Timer.wait_time <=0.2:
+		$Player/Path2D/Timer.wait_time = 0.2
+	else:
+		$Player/Path2D/Timer.wait_time -=0.2
+
 #Se ejecuta cada que un mob es derrotado
 func _on_mob_dead(mob):
 	cant_mobs -=1
@@ -165,10 +169,6 @@ func _on_mob_dead(mob):
 		increase_mobs_speed()
 		racha_bajas = 0
 		bajas_objeto += 5
-		if mobs_max <150:
-			mobs_max+=12
-		else:
-			mobs_max = 150
 		spawn_object(mob)
 
 #Llama a la funcion spawn_jefe() cada cierto tiempo
@@ -182,3 +182,7 @@ func _on_resume():
 func _on_exit():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+func _on_player_new_gun():
+	increase_mobs()
+	pass # Replace with function body.

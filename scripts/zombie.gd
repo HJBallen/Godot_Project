@@ -5,7 +5,7 @@ signal  mob_dead
 @onready var animation_tree = $Sprite2D/AnimationTree
 @onready var player = get_node("/root/Stage/Player")
 
-var health := 4
+var health := 2
 var hurt : bool
 var dead : bool
 

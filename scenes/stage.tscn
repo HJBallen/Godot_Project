@@ -63,6 +63,7 @@ autostart = true
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="healed" from="Player" to="GUI" method="_on_player_healed"]
 [connection signal="hit" from="Player" to="GUI" method="_on_player_hit"]
+[connection signal="new_gun" from="Player" to="." method="_on_player_new_gun"]
 [connection signal="player_get_shield" from="Player" to="GUI" method="_on_player_get_shield"]
 [connection signal="player_ready" from="Player" to="GUI" method="_on_player_ready"]
 [connection signal="regen_shield" from="Player" to="GUI" method="_on_player_regen_shield"]
